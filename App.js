@@ -3,9 +3,11 @@ import { StyleSheet, View} from 'react-native';
 import TextEdit from './components/TextEdit';
 
 export default function App() {
+  
   return (
     <View style={styles.container}>
       <TextEdit></TextEdit>
+      
     </View>
   );
 }
