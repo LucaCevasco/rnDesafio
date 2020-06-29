@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, View, TextInput, Animated, PanResponder, Button } from 'react-native';
-
+// @ts-ignore
+import Gestures from 'react-native-easy-gestures';
 
 export default function TextEdit() {
 
@@ -45,22 +46,24 @@ export default function TextEdit() {
       <View style={styles.container}>
         <Button title={'tap mostrar/ocultar'} color="#000" onPress = {ShowHideComponent}/>
         {show ? (
-          <Animated.View
-            style={[{
-              flexWrap: 'wrap',
-              width: '50%',
-            }, 
-            pan.getLayout()
-            ]}
-            {...panResponder.panHandlers}
-          >
-          <TextInput
-            style={{ color: '#fff', borderWidth: 1, fontSize:27}}
-            multiline
-            onChangeText={text => onChangeText(text)}
-            value={value}
-          />
-          </Animated.View>
+          <Gestures>
+            <Animated.View
+              style={[{
+                flexWrap: 'wrap',
+                width: '50%',
+              }, 
+              pan.getLayout()
+              ]}
+              {...panResponder.panHandlers}
+            >
+            <TextInput
+              style={{ color: '#fff', borderWidth: 1, fontSize:27}}
+              multiline
+              onChangeText={text => onChangeText(text)}
+              value={value}
+            />
+            </Animated.View>
+            </Gestures>
         ) : null}
         
       </View>
